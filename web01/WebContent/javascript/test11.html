@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>산술연산자</title>
+</head>
+<style>
+input{
+width: 50px;
+}
+</style>
+<body>
+<input id= "v1" type="text" >
+<select id="op">
+<option>+</option>
+<option>-</option>
+<option>*</option>
+<option>/</option>
+<option>%</option>
+</select>
+<input id="v2" type="text">
+<button id="compute">=</button>
+<input id="result" type="text">
+
+<script>
+"use strict";
+// +,-,*,/
+var v1=document.getElementById("v1");
+var v2=document.getElementById("v2");
+//compute 아이디의 input 태그 객체를 찾는다.
+var compute=document.getElementById("compute");
+
+//compute 태그 객체의 함수를 설정한다.
+// 마우스로 클릭햇을때 호출 되는 함수를 설정한다.
+// onclick() 함수는 버튼을 클릭할 때 마다 호출될 것이다.
+compute.onclick= function(){
+	var e1=document.getElementById("v1");
+	var e2=document.getElementById("v2");
+	
+	// a에 텍스트 값을 출력
+	// var a=e1.value; // 이렇게 사용하면 문자열인줄 알수 있다.
+	// 그렇기 때문에 parseInt에 출력
+	var a=parseInt(e1.value);
+	var b=parseInt(e2.value);
+
+	var e4=document.getElementById("op");
+	
+	if(e4.value=='+')
+		var result=a+b;
+	else if(e4.value=='-')
+		var result=a-b;
+	else if(e4.value=='*')
+	    var result=a*b;
+	else if(e4.value=='/')
+	      var result=a/b;
+	else if(e4.value=='%')
+        var result=a%b;
+	
+	
+
+/* 	console.log(result);
+	console.log(typeof a);
+	console.log(typeof b);
+ */
+ var e3=document.getElementById("result");
+ e3.value=result;
+ 
+	
+};
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
