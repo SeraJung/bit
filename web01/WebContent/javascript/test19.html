@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>조건문</title>
+</head>
+
+<body>
+<script>
+"use strict";
+/* 조건문 : 조건에 다라 실행할 명령어를 선택 */
+ 
+ var level =3;
+ switch(level){
+ case 0: 
+	 console.log('손님');
+	 break;
+ case 1:
+	 console.log('일반');
+	 break;
+ case 2:
+	 console.log('관리자');
+ default:
+	 console.log('기타');
+ 
+ }
+ 
+ var auth = 2;
+ switch(auth){
+//break문은 안쓰면 조건이 포함하는것부터 다음 라인으로 갑니다잉~~
+ case 3:
+	 console.log('삭제가능.');
+ case 2:
+	 console.log('변경가능');
+ case 1:
+		console.log('작성가능');
+ default : 	       
+	 console.log('조회가능');
+ }
+//조건연산자
+// (조건)? 문장1: 문장2
+//조건이 참이면 문장1을 실행 아니면 문장2를 실행
+var a=10;
+var b=20;
+var max=0;
+/* if(a>b)
+	max=a;
+else
+	max=b;
+*/
+ max=(a>b)?a:b;
+ console.log(max);
+ 
+ a=25;
+ b=38;
+ // && ||을 활용한 조건문
+ 
+ (a>b)&&(max=a);//첫번째 명령어가 true일때만 뒷명령어를 실행.
+ (a<b)||(max=b);//첫번째 명령어가 true이면 뒷문장을 실행안함.
+ console.log(max);
+ 	</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

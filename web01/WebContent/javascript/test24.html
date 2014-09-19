@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수</title>
+</head>
+
+<body>
+<script>
+"use strict"; 
+
+//객체지향언어는 기능들을 쉽게 관리하고 싶기 때문에 한것이다.
+//속도를 빠르게 하기 위해서 그런게 아니라.. 
+//기능들을 묶어서 관리하기 위한거라고!!! 이해하기 
+
+/* 함수 : 반복사용할 명령어들을 묶어 두는 문법
+* 1.function 함수명(){}
+* 2.function 함수명(파라미터,파라미터){}
+* 3.function 함수명(){return 값;}
+* 4.function 함수명(파라미터,파라미터){return 값;}
+*/
+
+  //=>반복적으로 사용되는 명령어들
+  //=> 나중에 변경하기 쉽게 만들기 위해
+  //=>파라미터x 리턴값x
+  
+function boundary(){
+  console.log("--------------------------------------");
+}
+  //파라미터 사용.리턴값 사용안함
+  //파라미터(parameter)란 함수를 호출할 때 넘어오는 값을 담는 변수.
+  //아규먼트(argument)란 함수를 호출할 때 넘겨주는 값.
+  //현업에서는 파라미터와 아규먼트를 그냥 막 쓴다.
+  //분석 설계에서는 구분하여 사용.
+function displayScore(score){
+	console.log("이름",score[0]);
+	 console.log("국어",score[1]);
+	 console.log("영어",score[2]);
+	 console.log("수학",score[3]);
+	 console.log("과학",score[4]);
+	 console.log("사회",score[5]);
+	 console.log("총점",score[6]);
+	 console.log("평균",score[7]);
+	 
+}
+function computeTotal(score){
+	var sum=0
+	for (var i=1; i<6;i++){
+		sum += score[i];
+	}
+	score[6]= sum;
+}
+function computeAverage(sum,count){
+	return sum/count;
+}
+ var s1=["홍길동",100,80,78,66,95];
+ var s2=["임꺽정",70,78,100,56,95];
+ var s3=["장보고",78,88,95,84,100];
+ boundary();// 함수 호출: 위에 정의한 명령어들을 재사용/.
+ 
+ 
+ computeTotal(s1);
+ computeTotal(s2);
+ computeTotal(s3);
+ 
+ s1[7]=computeAverage(s1[6],5);
+ s2[7]=computeAverage(s2[6],5);
+ s3[7]=computeAverage(s3[6],5);  
+ 
+ //displayScore() 함수의 파라미터 변수 score에 넘겨줄 값 s1
+ //s1을 아규먼트라고 한다.
+ displayScore(s1); // 파라미터 값으로 s1배열을 넘긴다.
+ boundary();
+ displayScore(s2); // 파라미터 값으로 s2배열을 넘긴다.
+ boundary();
+ displayScore(s3); // 파라미터 값으로 s3배열을 넘긴다.
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

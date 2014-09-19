@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>==과 ===의 비교</title>
+</head>
+
+<body>
+<!-- 
+==연산자
+
+-->
+
+<script>
+"use strict";
+/* ==연산자 */
+
+ //암시적 형변환(imlicit type conversion)
+ //=>연산을 위해 두개의 값을 같은 타입으로 자동으로 형 변환하는 것
+ //== 연산에서 암시적 형변환은 어떤 타입의 값을 number로 변환한다.
+
+ console.log("==암시적 형변환 테스트 ------------------------------");
+ console.log("'false'==0",'false'==0);
+ console.log("0=='false'",0=='false');
+ console.log("'true'==1",'true'==1);
+ console.log("1=='true'",1=='true');
+ console.log("'okok'==1",'okok'==1);
+ console.log("1=='okok'",1=='okok'); 
+ console.log("'1'==true",'1'==true);
+ console.log("'10'==true",'10'==true);
+ console.log("'10$'==10",'10$'==10);
+ 
+ 
+ console.log("'false'==false",'flase'==false);
+ console.log("100=='100'",100=='100');
+ 
+ 
+ var x = '100';
+ if(x == 100)
+	 console.log("x의 값은 100 입니다.");
+ //=== 는 타입과 값이 일치할때만  true이다.
+ x=100;
+ if(x===100){
+	 console.log("X의 값은 완전히 100입니다.");
+ }
+ var y='오호라';
+ 
+ if(y){
+	 console.log('y는 참이다.');
+ }
+ 
+ console.log("''==false",''==false);
+ console.log("''==false",''===false);
+ console.log("0==false",0==false);
+ console.log("0===false",0===false);
+ 
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
