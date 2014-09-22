@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클로저2</title>
+
+<body>
+<script>
+"use strict"; 
+
+//함수를 argument로 넘기기
+function fire(method){
+	method();
+	
+}
+// 1) 일반함수 넘기기
+function myGun(){
+	console.log("따따따 콩");
+}
+fire(myGun);
+
+//2) 익명함수 넘기기.
+fire(function(){
+	console.log("드르륵........찌르르를......")
+	console.log("털털털...................")
+	});
+
+
+//사례 2
+function compute(money, interest){
+	var sum= money +interest(money);
+	console.log("원금 +이자=", sum);
+}
+console.log("------------------------------");
+compute(1000000, function(m){
+	return m*0.021;
+});
+compute(1000000, function(m){
+	return m*0.035;
+});
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

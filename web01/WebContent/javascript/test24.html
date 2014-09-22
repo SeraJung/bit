@@ -56,19 +56,19 @@ function computeAverage(sum,count){
  var s1=["홍길동",100,80,78,66,95];
  var s2=["임꺽정",70,78,100,56,95];
  var s3=["장보고",78,88,95,84,100];
- boundary();// 함수 호출: 위에 정의한 명령어들을 재사용/.
+
  
  
  computeTotal(s1);
- computeTotal(s2);
- computeTotal(s3);
- 
  s1[7]=computeAverage(s1[6],5);
+ computeTotal(s2);
  s2[7]=computeAverage(s2[6],5);
+ computeTotal(s3);
  s3[7]=computeAverage(s3[6],5);  
  
  //displayScore() 함수의 파라미터 변수 score에 넘겨줄 값 s1
  //s1을 아규먼트라고 한다.
+ boundary();// 함수 호출: 위에 정의한 명령어들을 재사용/.
  displayScore(s1); // 파라미터 값으로 s1배열을 넘긴다.
  boundary();
  displayScore(s2); // 파라미터 값으로 s2배열을 넘긴다.
