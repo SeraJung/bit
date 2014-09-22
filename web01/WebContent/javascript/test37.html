@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체:object()함수</title>
+
+<body>
+<script>
+"use strict"
+//자바스크립트에서 제공하는 Object()라는 함수를 사용하여 객체 만들기
+//1) new 라는 명령어로 빈 바구니 생성
+//2) Object() 함수를 사용하여 빈 바구니에 기본 변수와 함수 넣기.
+
+var calcObj= new Object();
+
+calcObj.result=0;
+calcObj.plus=function(value){this.result += value};
+calcObj["minus"]=function(value){this.result -= value};
+calcObj.multiple=function(value){this.result *= value};
+calcObj.divide=function(value){this.result /= value};
+
+
+calcObj.plus(10);
+calcObj.minus(7);
+calcObj.multiple(3);
+console.log(calcObj.result);
+console.log(calcObj.toString());//objecti가 빈 객체에 추가한 함수.
+//아래의 명령어는 위의 명령어와 똑같다.
+/* var calcobj2={
+	    "result": 0,
+	    "plus" : function(value){
+	      this.result +=value//끝이 확신하면 ';'를입력 안해도 된다잉 ~!
+	      //같은 객체에 소속된 멤버를 가르킬 때는 this를 사용한다.
+	    },
+	    //끝이 확신하면 ';'를입력 안해도 된다잉 ~!!!!!잊어먹지마라잉
+	    "minus": function(value){this.result -=value},
+	    "multiple":function(value){this.result *=value;},
+	    "divide" : function(value){this.result /=value;}
+	    }; */
+
+
+ </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
