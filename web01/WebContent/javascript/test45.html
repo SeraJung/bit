@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내장 함수</title>
+
+<body>
+<script>
+"use strict"
+
+
+//인코딩 함수
+// 웹 브라우저와 웹서버 사이의 데이터를 주고 받을 때 
+// 데이터가 깨지지 않도록 특별한 방식으로 변경하고 복구하는 함수
+
+//한글을 인코딩하는ㄴ거
+
+var url="http://test.com/ok?aaa=123&keyword=홍길동"
+
+//디코드는 웹서버가 알아서다함..
+
+var encode=escape(url);//영어와 일부 아스키 문자를 빼고 인코딩
+console.log(encode);
+console.log(unescape(encode));
+
+console.log("--------------------");
+encode=encodeURI(url); //최소한의 값 (한글)만 인코딩
+console.log(encode);
+console.log(decodeURI(encode));
+
+console.log("--------------------");
+encode=encodeURIComponent(url); //영어(.등)빼고 모두 인코딩
+console.log(encode);
+console.log(decodeURIComponent(encode));
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
