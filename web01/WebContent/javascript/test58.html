@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 처리</title>
+
+<body>
+<input id="input1" type="text"/><br>
+<input id="input2" type="text"/><br>
+<script>
+"use strict"
+
+//change 이벤트: 포커스를 잃었을때 기존 값과 다르면 이벤트 발생
+/* document.getElementById('input1').onchange=function(event){
+	console.log(event.constructor);
+} */
+
+
+ 
+ document.getElementById('input1').onkeypress=function(event){
+	console.log(event.constructor);
+	console.log(event.key);// DOM level3;
+	console.log(event.code);// DOM LEVEL3;
+	console.log(event.char);//only IE
+	console.log(event.charCode);//deprecated
+	console.log(event.keyCode);//deprecated
+	//console.log(which);//DEPRECATED  
+	if(event.keyCode == 13){
+		//포커스를 input2로 옮긴다.
+		//this=> 이벤트가 발생된 객체. input1
+		//this.blur();//이벤트를 잃어라.
+    //아래문장은 브라우저야, input2태크에 포커스를 주라고 명령을 내리는 식이다.
+	   document.getElementById('input2').focus();
+		//
+	}
+
+}
+
+ 
+</script>
+</body>
+</html>

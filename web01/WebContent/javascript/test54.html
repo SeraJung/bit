@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>브라우저 객체: location객체</title>
+
+<body>
+<script>
+"use strict"
+//브라우저에서 제공하는 객체들
+//window
+//  L location //주소창을 제어하는 객체
+//  L navigator
+//  L history
+//  L screen
+//  L document
+
+//location 객체에 들어 있는 모든 값 출력
+
+for(var key in location){
+	console.log(key,'---->',location[key]);
+} 
+
+window.setTimeout(function(){
+	//window.location.href="http://www.daum.net";
+	location.reload();//현제 페이지 리프래시
+},3000);
+</script>
+</body>
+</html>

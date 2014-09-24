@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 처리</title>
+
+<body>
+<button id="btn1">버튼1</button>
+<button id="btn2">버튼2</button>
+<h1 id= msg></h1>
+<script>
+"use strict"
+//이벤트란?
+//사용자 또는 시스템에 의해 실행 개입하는것.
+
+//이벤트 발생할 때 호출할 함수(이벤트 리스너)를 등록
+
+//위의 html 태그에서 'btn1'이라는 아이디를 갖는 객체 찾기
+var e1=document.getElementById('btn1');
+ //btn1 객체의 'click'이벤트에 대해 리스너 등록하기
+ //onclick 이라는 이름을 리스너(함수)를 등록해야 한다.
+ //function 함수명(이벤트 정보를 담은 객체 ){}
+  e1.onclick=function(event){
+	  console.log('click');
+	  console.log('생성자 =',event.constructor);
+	  console.log('ALT KEY =',event.altKey);
+	  console.log('CTRL KEY=',event.ctrlKey);
+	  console.log('SHIFT KEY =',event.shiftKey);
+	  console.log('버튼번호 =',event.button);
+	  console.log(' X=',event.clientX);
+	  console.log('Y =',event.clientY);
+  };
+e1.ondblclick=function(event){console.log('dblclick')};
+e1.onmousedown=function(event){console.log('mousedown')};
+e1.onmouseup=function(event){console.log('mouseup')};
+e1.onmouseover=function(event){console.log('mouseover')};
+e1.onmousemove=function(event){console.log('mousemove')};
+e1.onmouseout=function(event){console.log('mouseout')};
+//focus를 가진 객체만이 키 이벤트를 갖는다.
+
+e1.onkeydown=function(event){console.log('keydown')};
+e1.onkeyup=function(event){console.log('keyup')};
+e1.onkeypress=function(event){console.log('keypress')};
+//focus를 갖게 되면 호출합니다잉~!!
+
+e1.onfocus=function(event){console.log('focus')};
+e1.onblur=function(event){console.log('onblur')};
+
+
+
+
+
+ setInterval(function(){
+	 var today= new Date();
+	 document.getElementById('msg').innerHTML= today.toString();
+ },1000); 
+</script>
+</body>
+</html>
