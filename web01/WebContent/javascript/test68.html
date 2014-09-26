@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 엘리먼트 찾기</title>
+
+<style>
+div{
+  border: 1px solid red;
+  margin:10px;
+}
+p{
+  border: 1px dashed blue;
+  margin:10px;
+}
+span {
+  border: 2px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1 id='header1'>제목1</h1>
+<p id='p1'>설명들</p>
+
+<h2 id='header2'>부제목1</h2>
+<p id='p2'>내용..</p>
+
+<h2 id='header3'>부제목2</h2>
+<p id='p3'>내용..</p>
+
+<h2 id='header4'>부제목3</h2>
+<p id='p4'>내용..</p>
+
+<script>
+"use strict"
+//주의!!!!!!!!!!!1
+//태그의 ID는 반드시 HTML 문서에서 하나여야 한다.
+
+//id로 엘리먼트 찾기
+var e1=document.getElementById('header1');
+console.log(e1.innerHTML);
+
+//태그이름으로 찾기
+console.log('--------------------------');
+var tagList=document.getElementsByTagName('h1');
+console.log(tagList.constructor);
+
+console.log('--------------------------');
+
+for(var i=0; i<tagList.length;i++){
+	console.log(tagList[i].innerHTML);
+}
+ 
+ //tagList는 배열이 아니라 객체이다~!!
+ //=> 객체인 경우 객체에 등록된 프로퍼티를 출력하기 때문에
+ //위의 반복문 결과와 다르다잉.
+ //태그의 목록을 다루려면 위 형식으로 반복문을 사용하라.
+ 
+ /* 
+ for(var i in tagList){
+	 console.log(i,tagList[i]);
+ } */
+ console.log('--------------------------');
+var tagList2=document.getElementsByTagName('h2');//이아이가
+//리턴하는게 로드리스트입니다잉~!!!
+ console.log(tagList2.constructor);
+ for (var i=0;i<tagList2.length;i++){
+	 console.log(tagList2[i].innerHTML);
+ }
+</script>
+</body>
+</html>

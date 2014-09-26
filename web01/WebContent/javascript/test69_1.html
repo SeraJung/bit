@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+
+<style>
+form th{
+  text-align : right;
+}
+</style>
+</head>
+<body>
+	<!-- 게시판 목록 -->
+	<div>
+		<h1>Board List</h1>
+		<table border="1">
+			<tr>
+				<th>No</th>
+				<th>Title</th>
+				<th>Writer</th>
+				<th>Date</th>
+				<th>Count</th>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>ohora</td>
+				<td>honggildong</td>
+				<td>2014-09-25</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>aaaa</td>
+				<td>hong</td>
+				<td>2014-1-1</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>aaaa</td>
+				<td>hong</td>
+				<td>2014-1-1</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>aaaa</td>
+				<td>hong</td>
+				<td>2014-1-1</td>
+				<td>0</td>
+			</tr>
+
+		</table>
+	</div>
+	<hr>
+	<div>
+	<h2>Board Detail</h2>
+	<form>
+	<table >
+	<tr>
+	<th>제목</th>
+	<td>  <input type='text' id='title'/><br></td>
+	</tr>
+	<tr>
+  <th>내용</th>
+  <td><textarea id='content' rows="10" cols="20" ></textarea><br></td>
+  </tr>
+	<tr>
+  <th> 작성자</th>
+  <td><input type='text' id='writer'/><br></td>
+  </tr>
+  <tr>
+  <th> 암호</th>
+  <td><input type='password' id='password'/><br><br></td>
+  </tr>
+  </table>
+    
+  <button id='btnAdd' type='button'>Add</button>
+  <button id='btnCancle' type='reset'>Cancel</button>
+	</form>
+	</div>
+
+	<script>
+		"use strict"
+		var boardList=[];
+		
+		document.getElementById('btnAdd').onclick=function(evnet){
+			var board={
+				'title':document.getElementById('title').value,
+				'content': document.getElementById('content').value,
+				'writer' :document.getElementById('writer').value,
+				'password':document.getElementById('password').value 			
+			};
+			
+			boardList.push(board);
+		};
+	</script>
+</body>
+</html>
