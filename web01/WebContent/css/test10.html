@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>font</title>
+<style>
+/* 사용할 폰트 지정  
+의미 : 순서대로 폰트를 찾는다.
+없으면, 웹 브라우저에 설정된 sans-serif(고딕체)를 사용하여 출력한다.
+sans-serif =>폰트 이름이 아니라, 폰트의 그룹명이다.
+serif => 명조체를 말한다. 예)궁서체, 바탕체
+
+font-size: 폰트 높이
+color: 폰트색상
+font-weight: lighter, normal, bold, bolder
+font-decoration : none, underline,overline,line-through,blink
+폰트크기 단위 : px,% em( 배수), 상수값
+               (xx-small,x-small,small,medium,large,x-large,xx-large)
+
+실무권고 !
+1)기본 폰트는 body 태그에 상수 값으로 지정하라 ! 가능한 px을 사용하지 말라
+2) 나머지 태그에 대해서는 기본 폰트를 기준으로 상대 크기를 지정하라
+Raster : 그림이나 폰트를 모눈종이방식으로 각 픽셀로 표현
+         => gif,jpge,bmp
+         => 그린 크기를 늘리면 계단형식으로 표현
+         => 그림 복합도와 상관없이 파일크기가 같다
+         => 출력속도 빠르다.
+vector : 명령어로 그림을 표현
+         => 화면 출력을 할 때 마다 => 명령어를 실행 =>느리다
+         => 화면이 복잡하면 =>명령어가 많아진다 => 파일크기가 커진다.
+         => 화면 크기를 늘려도 매끈하게 출력
+         예) 캐드, 클립아트 truetype 폰트
+*/
+body{
+font-family : Garuda,Verdana, Geneva, Arial,asns-serif ;
+font-size: medium;
+color: darkgray;
+font-weigth: lighter;
+}
+#header1 {
+text-decoration: underline;
+font-size: 4em;/* 기본 폰트 크기의 4배 */
+font-style: italic
+
+}
+</style>
+</head>
+<body>
+  <div id='main'>
+    <h1 id='header1'>title1</h1>
+    <h2 class='firstH2 underH2'>1.1부제목</h2>
+    <p>1.1내용</p>
+    <h2 class='underH2'>1.2부제목</h2>
+    <p>1.2내용</p>
+    <h2>1.3부제목</h2>
+    <p>1.3내용</p>
+
+    <div id='div1'>
+      <h1 id='header2'>제목2</h1>
+      <h2 class='firstH2 underH2'>2.1부제목</h2>
+      <p>2.1내용</p>
+      <h2 class='underH2'>2.2부제목</h2>
+      <p>2.2내용</p>
+      <h2>2.3부제목</h2>
+      <p>2.3내용</p>
+    </div>
+    <div id='div2'>
+      <h1 id='header3'>제목3</h1>
+      <h2 class='firstH2'>3.1부제목</h2>
+      <p>3.1내용</p>
+      <h2 class='underH2'>3.2부제목</h2>
+      <p>3.2내용</p>
+      <h2>3.3부제목</h2>
+      <p>3.3내용</p>
+    </div>
+
+    <h1 id='header4'>제목4</h1>
+    <h2 class='firstH2'>4.1부제목</h2>
+    <p>4.1내용</p>
+    <h2 class='underH2'>4.2부제목</h2>
+    <p>4.2내용</p>
+    <h2>4.3부제목</h2>
+    <p>4.3내용</p>
+  </div>
+</body>
+</html>

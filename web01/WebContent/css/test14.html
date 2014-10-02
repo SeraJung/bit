@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css분리하기</title>
+<link href="common.css" rel='stylesheet' type='text/css'>
+<link href="generalpage.css" rel='stylesheet' type='text/css'>
+<link href="test14.css" rel="stylesheet" type="text/css">
+<!-- 
+레이아웃 => 위치이동
+1) float 
+    출력될 현재 위치에서 오른쪽 또는 왼쪽으로 이동
+    기본 출력 순서에서 제외됨
+    기본출력순서 => 웹브라우저는 콘텐츠를 출력할때 항상 좌->우 , 위->아래 출력
+    사용법 => 예)  float: left 또는 right
+2) absolute 
+3) relative :기본출력 순서를 고수하면서, 위치를 상/하/좌/우로 움직이고 싶을때 사용
+4) fixed
+ -->
+<style>
+/* css 분리하기
+*/
+</style>
+</head>
+<body>
+<div id='main'>
+	<div id='header'>
+		<img id='logo' src='http://dummyimage.com/140x50/
+		ffff00/f00&text=bit+Talk'>
+	
+		<div id='menubar'>
+			<a href="#">공지사항</a> 
+			<a href="#">자료실</a> 
+			<a href="#">수업</a>
+    <a href="#">로그아웃</a>
+		</div>
+	</div>
+	<div id='sidebar'>
+		<div id='user'>
+			<img src='bg.jpg' width="60" height='60'>
+			 <span id='userName'>홍길동</span>
+		</div>
+		<h1>알림</h1>
+		<ul>
+			<li>출석률이 저조합니다.</li>
+			<li>과제 제출하세요.</li>
+			<li>수당지급 연기되었습니다..</li>
+		</ul>
+		<h1>소식</h1>
+		<p>와우 우리가 이길꺼야~헐....</p>
+		<p>내일 공모전 안한답니다. (뻥ㅋㅋ)</p>
+		<p>책 공동구매하려 합니다. 참여하실분..</p>
+	</div>
+	<div id='content'>
+		<div id='breadcrumb'>공지사항</div>
+		<h1>왜 더 많은 웹 개발 언어가 필요한가?</h1>
+		<p>
+			개발자들이 선택할 수 있는 프로그래밍 언어 수가 지금보다 많다면 웹 애플리케이션이 
+			네이티브 앱을 기능과 사용성에서 앞설 수있을까? 구글 소프트웨어 엔지니어인 
+			길라드 브라차는 그렇게 확신하는 모양이다.<br> 
+			IDG뉴스 보도에 따르면 그는			최근 미국 뉴욕에서 열린 큐콘 개발자 
+			컨퍼런스에서 웹앱이 네이티브 앱과 제대로 경쟁하려면 실용적인 언어에서 
+			개발자들이 더많은 선택권을 가져야 한다고 목소리를 높였다.	그렇지 않으면 
+			특정 기업들이 소유한 앱스토어가 계속 시장을 지배할 것이란	것이었다.<br> 
+			길라드 브라차는 자바 프로그래밍 언어 공동 창시자 중 한명이자 요즘 주목받고있는
+			뉴스피크(Newspeak)를 만든 인물이기도 하다. 
+			구글에 합류하기전에는 자바를 만든 썬마이크로시스템즈에도 있었고 개발자
+			생태계에서 많이 읽히는 책인 이펙티브 자바(Effective Java)도 집필했다.
+		</p>
+	</div>
+	<div id='footer'>
+		<p>비트교육센터 자바 63기</p>
+	</div>
+</div>
+</body>
+</html>
