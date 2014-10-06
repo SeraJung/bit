@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> selector </title>
+<script src='jquery-1.11.1.js'></script>
+<script>
+
+/* 
+  id로 태그를 찾기
+  CSS 셀렉터 문법 : #아이디.
+  CSS 셀렉터 문법 : 태그명#아이디 <- 선택의 폭을 더 좁힐 수 있다.
+  CSS 셀렉터 문법 : 클래스명#아이디
+*/
+$(function(){
+//태그 이름으로 선택하기
+	$('h1#header4').css('background-color','yellow');
+	
+});
+</script>
+</head>
+
+<body>
+<h2 id='header1'>제목 1111111111111111</h2>
+<p>내용..................</p>
+<h2 id='header2'>제목 2222222222222222222</h2>
+<p>내용..................</p>
+<h2 id='header3'>제목 33333333333333333333333333333</h2>
+<p>내용..................</p>
+<h2 id='header4'>제목 44444444444444</h2>
+<p>내용..................</p>
+<h2 id='header5'>제목 5555555555555555555555</h2>
+<p>내용..................</p>
+
+</body>
+</html>

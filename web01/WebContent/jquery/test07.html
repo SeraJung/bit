@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> selector </title>
+<script src='jquery-1.11.1.js'></script>
+<script>
+//ready()의 축약법
+/* 
+1.태그이름으로 대상 선택하기
+$(CSS 셀렉터 문법)
+=>리턴 :jQuery 함수가 만든 배열, 배열 안에 엘리먼트가 들어 있다.
+  =>CSS 셀렉터 문법 : #아이디, 태그명, .클래스명, XXX:슈도 셀렉터 등
+*/
+$(function(){
+//태그 이름으로 선택하기
+	$('h1').each(function(index,element){
+		  //console.log(index,element.innerHTML);
+		  //다음문장은 오류 ~=> 파라미터는  element는 jQuery가 만듣 객체가 아니라
+		  //오리지널 엘리먼트이기 때문이당.
+		  
+		//console.log(index,element.html());   
+		//오리지널 엘리먼트를 jQuery()로 가공한 다음에는 html()을 사용할 수 있다.
+		console.log(index,$(element).html());   
+	});
+});
+</script>
+</head>
+
+<body>
+<h1>제목 1111111111111111</h1>
+<p>내용..................</p>
+<h1>제목 2222222222222222222</h1>
+<p>내용..................</p>
+<h1>제목 33333333333333333333333333333</h1>
+<p>내용..................</p>
+<h1>제목 44444444444444</h1>
+<p>내용..................</p>
+<h1>제목 5555555555555555555555</h1>
+<p>내용..................</p>
+
+</body>
+</html>

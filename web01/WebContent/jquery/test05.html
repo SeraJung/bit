@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>load이벤트</title>
+<script src='jquery-1.11.1.js'></script>
+<script>
+
+$(document).ready(function(){
+    alert('333333333');
+  });
+	//dom 트리가 완성되었을 때 load 이벤트 발생
+	window.onload = function(event) {
+		//웹페이지 초기화 하는 코드를 넣는다.
+		
+			alert('111111111'  );
+		});
+	}
+	$(document).ready(function(){
+		alert('222222');
+	});
+</script>
+</head>
+
+<body>
+	<button id='btn1'>버튼1</button>
+	<div id='formdiv' style='display: none;'>
+		<form>
+			이름: <input type='text' name='name'><br> 나이: <input
+				type='text' name='age'><br>
+		</form>
+	</div>
+</body>
+</html>
