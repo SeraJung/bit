@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> hover()  </title>
+<style>
+#d1{
+position:relative;
+width:150px
+}
+#btnClose {
+
+position:absolute;
+top:0px;
+right:0px;
+
+}
+</style>
+
+<script src='jquery-1.11.1.js'></script>
+
+<script>
+
+/* 
+ hover () => mouseover, mouseout 이벤트 리스너 등록, 단축함수
+ mouseenter: 해당 엘리먼트 위에 마우스 커서가 있을때
+               자식엘리먼테 의해 가려 졌다가 다시 나타나도 이벤트 발생
+ mouseleave: 해당 엘리먼트에서 마우스 커서가 사라질때.
+               자식엘리먼트에 의해 가려질 때에도 이벤트 발생
+ */
+$(function(){
+	  //마우스 커서를 이미지에 올리면 이미지 오른쪽 상단 구석에 x버튼이 출력된다.
+	  //마우스 커서를 이미지 밖으로  보내면 x 버튼이 사라진다.
+	  
+	$('#img1').hover(function(event){
+
+		$('#btnClose').css('display','');
+	
+		
+	}, function(event){
+		$('#btnClose').css('display','none');
+	});
+
+	
+});
+</script>
+</head>
+
+<body>
+<button id='btn1'>이미지 추가</button>
+<div id='d1'>
+<img id='img1' src='img1.jpg' width='150' >
+<button id='btnClose' style='display:none;'>x</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> mouseenter mouseleave  vs mouseout mouseover </title>
+<style>
+#d1{
+border: 1px solid red;
+
+}
+</style>
+
+<script src='jquery-1.11.1.js'></script>
+
+<script>
+
+/* 
+ hover () => mouseover, mouseout 이벤트 리스너 등록, 단축함수
+ mouseenter: 마우스 커서가 해당 엘리먼트에 진입할 때
+               자식엘리먼테 의해 가려 졌다가 다시 나타나도 이벤트 발생하지 않는다
+               자식 윈도우에 있든 없든 해당 엘리먼트에 머무는 동안에는
+               이벤트가 발생하지 않는다.
+               
+ mouseleave: 마우스 커서가 해당엘리먼트를 떠날 때 
+               자식엘리먼트에 의해 가려진다 해도 이벤트 발생하지 않는다.
+               자식 윈도우에 상관없이 해당 엘리먼트를 벗어날 때만
+               이벤트가 발생한다.
+ */
+$(function(){
+	  $('#d1').mouseenter(function(event){
+		  console.log('mouseEnter');
+	  }).mouseleave(function(event){
+		  console.log('mouseLeave');
+	  });
+	  
+	  $('#d1').mouseover(function(event){
+		  console.log('mouseover');
+	  }).mouseout(function(event){
+		  console.log('mouseout');
+	  });
+	 $('#img1').mouseover(function(event){
+		 event.stopPropagation();
+	 }).mouseout(function(event){
+		 event.stopPropagation();
+	 });
+});
+</script>
+</head>
+
+<body>
+<button id='btn1'>이미지 추가</button>
+<div id='d1'>
+<img id='img1' src='img1.jpg' width='150' >
+<button id='btnClose' >x</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 리스너 등록 단축함수  </title>
+
+
+<script src='jquery-1.11.1.js'></script>
+
+<script>
+
+/* 
+ click () => 클릭 이벤트 리스너 등록 
+
+
+ $().on(이벤트명,셀렉터, 함수); // 예전의 live()와 같다.
+ => 현재 존재하는 태그뿐만 아니라 앞으로 생성될 태그에도 적용한다.
+ 
+ of() =>이벤트 리스너 해제
+ $().off(이벤트명, [셀렉터], [함수]);//
+ */
+$(function(){
+
+	$('#btn1').click(function(event){
+		$('<img>').attr('src','img5.jpg').css('width','100px')
+		.css('border','5px solid green')
+		.appendTo('body');
+	});
+
+	
+});
+</script>
+</head>
+
+<body>
+<button id='btn1'>이미지 추가</button>
+<img id='img1' src='img1.jpg' width='150' >
+
+</body>
+</html>
