@@ -79,7 +79,6 @@ function displayResult(res,content){
 	res.write('<html><head><title>계산</title></head>');
 	res.write('body');
 	res.write(content);
-	res.write(v1+''+op+''+v2+' = '+result);
 	res.write('</body></html>');
 	res.end();
 }
