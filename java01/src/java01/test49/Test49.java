@@ -23,7 +23,7 @@ public class Test49 {
     //키로 냉장고를 열어본다.
     //map에서 값을 꺼낼 때 원리?
     // 1) 저장할 때 사용할 키의 해쉬값이 같은지 조사.
-    // 2) equals()를 호추랗여 값이 같은지 조사.
+    // 2) equals()를 호출하여 값이 같은지 조사.
     
     System.out.println(냉장고2.get(key2));
     

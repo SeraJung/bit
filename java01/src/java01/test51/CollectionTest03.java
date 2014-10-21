@@ -38,12 +38,13 @@ class MyArray2 {
   }
   
   public int insert(int pos, String value) {
-    String temp;
+    //String temp;
     if(pos >= 0 && pos < cursor && cursor<10){
       
       cursor++;
       for(int i = cursor; i>= pos; i--){
-        /*if(i == cursor){
+        /*for(int i = pos; i< cursor;i++){
+         * if(i == cursor){
           temp = (String)list[i];
           list[i] = value;
           list[i+1] = temp;
