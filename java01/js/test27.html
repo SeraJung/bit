@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+// global variables => window 객체에 소속된다.
+var v1;// window.v1과 같다.
+var v2;
+var op;
+var result=0;
+
+v1 = parseInt(prompt('첫번째 값을 입력하시오.'));
+v2 = parseInt(prompt('두번째 값을 입력하시오.'));
+op = prompt('세번째 값을 입력하세요.');
+function compute(){
+	switch(op){
+	case "+": result=v1+v2; break;
+	case "-": result=v1-v2; break;
+	case "*": result=v1*v2; break;
+	case "/": result=v1/v2; break;
+	}
+}
+function displayReslut(){
+	console.log('--------------------------');
+	console.log(v1, op, v2, '=', result);
+	console.log('--------------------------');
+	}
+	compute();
+	displayReslut();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+package java01.test42;
+
+public class Tico extends Car {
+ /* 서브클래스들의 공통 속성/연산자(메서드)를 수퍼클래스로 옮긴다.
+  * 그리고 상속 받는다.
+  *  
+  String maker;
+  String model;
+  int cc;
+  int capacity;
+  java.util.Date releaseDate;*/
+  boolean sunRoof;
+  
+}
