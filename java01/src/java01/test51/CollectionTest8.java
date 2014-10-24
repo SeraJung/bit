@@ -1,73 +1,64 @@
 package java01.test51;
 
-import java01.test51.MyLinkedList3.Bucket;
-
-class MyStack{
+class MyStack {
   Object[] list = new Object[100];
   int top;
-  public void push(Object value){
-    if (top < list.length) 
-      list[top++] = value;      
+  
+  public void push(Object value) {
     
   }
-  // 마지막에 입력한 값을 꺼낸다. 목록에서 제거됨.
-  public Object pop(){
-    Object list1 = list[--top] ; 
-    list[top]= null;
-    return list1;
-  }
   
+  // 마지막에 입력한 값을 꺼낸다. 목록에서 제거됨.
+  public Object pop() {  
+    return null;
+  }
 }
-class MyQueue{
-  class Bucket{
+
+class MyQueue {
+  class Bucket {
     Object value;
     Bucket next;
   }
+  
   Bucket start;
   Bucket end;
-  public MyQueue(){
+  
+  public MyQueue() {
     start = new Bucket();
     end = start;
+  }
+  
+  public void add(Object value) {
     
   }
   
-  public void add(Object value){
-    end.value = value;
-    end.next = new Bucket();
-    end = end.next;
-    
-  }
-  //첫번째 입력 값을 꺼낸다.
-  public Object poll(){ 
-    if(start == end) return -1;    
-    Bucket poll = start;
-    start = start.next;
-    return poll.value;
-    
+  // 첫 번째 입력 값을 꺼낸다. 목록에서 제거됨.
+  public Object poll() { 
+    return null;
   }
 }
+
+
+
+
 public class CollectionTest8 {
+
   public static void main(String[] args) {
     MyStack stack = new MyStack();
     stack.push("0000");
     stack.push("1111");
     stack.push("2222");
     stack.push("3333");
-       
     
     for (int i = 0; i < 4; i++) {
       System.out.println(stack.pop());
-    }
-    
-    
-    //for
+    }//for
     /* 예상 출력 결과
      3333
      2222
      1111
      0000
      */
-    
     
     System.out.println("-------------------");
     
@@ -77,15 +68,10 @@ public class CollectionTest8 {
     queue.add("CCCC");
     queue.add("DDDD");
     
-    
     for (int i = 0; i < 4; i++) {
       System.out.println(queue.poll());
-    }
-   
-    
-    //for
-    /*
-     예상 출력 결과
+    }//for
+    /* 예상 출력 결과
     AAAA
     BBBB
     CCCC
@@ -94,3 +80,16 @@ public class CollectionTest8 {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

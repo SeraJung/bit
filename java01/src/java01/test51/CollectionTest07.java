@@ -1,35 +1,40 @@
-/* Iterator 설계비법
+/* Iterator 설계 비법
  - 보관소에서 데이터를 꺼낼 때 사용하는 설계 방식
-   => 데이터를 꺼내주는 담당자!!!
-   
- - 목적 :
+   => 데이터를 꺼내주는 담당자!
+ - 목적:
    배열에서 꺼내든, 링크드리스트에서 꺼내든, 스택에서 꺼내든
-   저장소의 구조에 상관없이 동일한 인터페이스(메서드)를 사용하여
-   데이터를 꺼내게 한다. 
+   저장소의 구조에 상관없이, 
+   동일한 인터페이스(메서드)를 사용하여
+   데이터를 꺼내게 한다.
+   
  */
 package java01.test51;
+
 
 
 /* 버킷 관리 */
 class MyLinkedList4 {
   /* member inner class
-   - 멤버 inner 클래스는 바깥 글래스의 인스턴에 접근할 수 없다.
-   - 매서드처럼 생각한다.
+   - 멤버 inner 클래스는 바깥 클래스의 인스턴에 접근할 수 있다.
+   - 메서드처럼 생각하면 된다.  
    */
   class Iterator {
     Bucket cursor = start;
     
-    public boolean hasNext(){
-      if(cursor != end) return true;
-      else
+    public boolean hasNext() {
+      if (cursor != end) 
+        return true;
+      else 
         return false;
     }
-    public Object next(){
+    
+    public Object next() {
       Object value = cursor.value;
       cursor = cursor.next;
       return value;
     }
   }
+  
   class Bucket {
     Object value;
     Bucket next;
@@ -44,15 +49,15 @@ class MyLinkedList4 {
     end = start;
   }
   
+  public Iterator iterator() {
+    return new Iterator();
+  }
+  
   public int add(Object value) {
     end.value = value;
     end.next = new Bucket();
     end = end.next;
     return ++size;
-  }
-  
-  public Iterator iterator(){
-    return new Iterator();    
   }
 
   public int size() {
@@ -118,50 +123,54 @@ public class CollectionTest07 {
   public static void printArray(MyLinkedList4 list) {
     MyLinkedList4.Iterator iterator = list.iterator();
     
-    while(iterator.hasNext()){
+    while(iterator.hasNext()) {
       System.out.println(iterator.next());
-    }
+    } //while
   }
   
-  public static void testGet(MyLinkedList4 arr){
-
+  public static void testGet(MyLinkedList4 arr) {
+    Object value = null;
     System.out.println("get(i) 사용하기 -----------------");
     long start = System.currentTimeMillis();
-    int size =arr.size();
-    for(int i = 0; i < size ; i++){
-      System.out.print(".");      
-    }
+    int size = arr.size();
+    
+    for (int i = 0; i < size; i++) {
+      value = arr.get(i);
+      System.out.print(".");
+    }//for
     long end = System.currentTimeMillis();
-    System.out.println(" \n소요시간"+ (end - start) );
-    
-  }
-  public static void testIterator(MyLinkedList4 arr){
-
-    Object value = null;
-    
-    
-    System.out.println("Iterator-----------------");
-    long start = System.currentTimeMillis();
-    MyLinkedList4.Iterator iterator = arr.iterator();
-    while(iterator.hasNext()){
-      value = iterator.next();
-      System.out.print(".");      
-    }
-    long end = System.currentTimeMillis();
-    System.out.println(" \n소요시간"+ (end - start) );
+    System.out.println("\n소요 시간: " + (end - start));
   }
   
+  public static void testIterator(MyLinkedList4 arr) {
+    Object value = null;
+    System.out.println("Iterator 사용하기 -----------------");
+    long start = System.currentTimeMillis();
+    MyLinkedList4.Iterator iterator = arr.iterator();
+    
+    while (iterator.hasNext()) {
+      value = iterator.next();
+      System.out.print(".");
+    }//while
+    long end = System.currentTimeMillis();
+    System.out.println("\n소요 시간: " + (end - start));
+  }
+
   public static void main(String[] args) {
     MyLinkedList4 arr = new MyLinkedList4();
-    for( int i = 0; i < 20000; i++)
-      arr.add("==>"+i);
+    for (int i = 0; i < 15000; i++) {
+      arr.add("==>" + i);
+    } // for
+
+    testGet(arr);
+    testIterator(arr);
     
     testGet(arr);
     testIterator(arr);
     
   }
-
-  /* iterator 사용 테스트*/
+  
+  /* Iterator 사용 테스트*/
   public static void main01(String[] args) {
     MyLinkedList4 arr = new MyLinkedList4();
     arr.add("00000");
@@ -177,6 +186,7 @@ public class CollectionTest07 {
     printArray(arr);
   }
   
+ 
 }
 
 

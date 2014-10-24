@@ -1,7 +1,8 @@
 /* LinkedList 데이터 구조 3
- - 인덱스로 버킷을 알아내는 코드를 별도의 메서드로 정의함
+ - 인덱스로 버킷을 알아내는 코드를 별도의 메서드로 정의함.
  - getBucketByIndex()
- - 이 메소드는 클래스 내부에서만 사용할 것이므로 private으로 접근을 제한한다.
+ - 이 메서드는 클래스 내부에서만 사용할 것이므로 private으로
+ 접근을 제한한다.
  */
 package java01.test51;
 
@@ -90,7 +91,7 @@ class MyLinkedList3 {
 }
 
 public class CollectionTest06 {
-  public static void printArray(MyLinkedList4 list) {
+  public static void printArray(MyLinkedList3 list) {
     for (int i = 0; i < list.size(); i++) {
       System.out.println(list.get(i));
     }// for
@@ -98,7 +99,7 @@ public class CollectionTest06 {
 
   /* LinkedList 삭제 테스트*/
   public static void main(String[] args) {
-    MyLinkedList4 arr = new MyLinkedList4();
+    MyLinkedList3 arr = new MyLinkedList3();
     arr.add("00000");
     arr.add("11111");
     arr.add("22222");
@@ -135,7 +136,7 @@ public class CollectionTest06 {
   
   /* LinkedList에 입력 테스트*/
   public static void main01(String[] args) {
-    MyLinkedList4 arr = new MyLinkedList4();
+    MyLinkedList3 arr = new MyLinkedList3();
     arr.add("00000");
     arr.add("11111");
     arr.add("22222");
