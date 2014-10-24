@@ -38,33 +38,26 @@ class MyArray2 {
   }
   
   public int insert(int pos, String value) {
-    //String temp;
-    if(pos >= 0 && pos < cursor && cursor<10){
-      
+    String temp;
+    if(pos >= 0 && pos < cursor && cursor<list.length){      
       cursor++;
-      for(int i = cursor; i>= pos; i--){
-        /*for(int i = pos; i< cursor;i++){
-         * if(i == cursor){
-          temp = (String)list[i];
-          list[i] = value;
-          list[i+1] = temp;
-        }
-        temp = (String)list[i];
+      //for(int i = cursor; i>= pos; i--){
+        for(int i = pos; i< cursor;i++){
+         temp = (String)list[i];
         list[i] = value;
         value = temp;
       }
-      return 0;*/
-        if (i == pos) {
-          list[i] = value;
-          this.cursor--;
-        } else {
+      return 0;
+        /*
           list[i] = list[i- 1];
         } // if
-      } // for
-      return 0;
-    }
-    System.out.println("안됩니다~!!!.");
+      list[pos]=value;
+       
+      return 0;*/
+    } else{
+    //System.out.println("출력이 안되요");
     return -1;
+    }
   }
 }
 
@@ -81,11 +74,11 @@ public class CollectionTest03 {
     System.out.println(arr.add("66666"));
     System.out.println(arr.add("77777"));
 
-    System.out.println("-----------------");
+   /* System.out.println("-----------------");
     for (int i = 0; i < arr.size(); i++) {
       System.out.println(arr.get(i));
     }// for
-    
+*/    
     /*arr.remove(3);
     
     System.out.println("-----------------");
@@ -93,8 +86,23 @@ public class CollectionTest03 {
       System.out.println(arr.get(i));
     }// for
 */
-    arr.insert(3, "xxxxx");
-    System.out.println("-----------------");
+    arr.insert(5, "xxxxx");
+    
+    System.out.println("5번에 삽입-----------------");
+    for (int i = 0; i < arr.size(); i++) {
+      System.out.println(arr.get(i));
+    }// for
+    
+    arr.insert(0, "!!!!!!");
+    
+    System.out.println("0번에 삽입-----------------");
+    
+    for (int i = 0; i < arr.size(); i++) {
+      System.out.println(arr.get(i));
+    }// for
+     
+    arr.insert(0, "@@@@");    
+    System.out.println("0번에 삽입-----------------");
     for (int i = 0; i < arr.size(); i++) {
       System.out.println(arr.get(i));
     }// for

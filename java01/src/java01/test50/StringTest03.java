@@ -17,6 +17,7 @@ public class StringTest03 {
     
     if(str1 == str2) System.out.println("str1 == str2");
     if(str2 == str3) System.out.println("str2 == str3");
+    if(str1.equals(str2))System.out.println("str1 와str2 값이 같다.");
   }
   public static void main01(String[] args) {
     String str1 = "Hello";
