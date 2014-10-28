@@ -10,7 +10,7 @@ package java01.test50;
 
 public class StringTest03 {
   
-  public static void main(String[] args) {
+  public static void main01(String[] args) {
     String str1 = new String("Hello");
     String str2 = str1.intern();
     String str3 = "Hello";
@@ -19,7 +19,7 @@ public class StringTest03 {
     if(str2 == str3) System.out.println("str2 == str3");
     if(str1.equals(str2))System.out.println("str1 와str2 값이 같다.");
   }
-  public static void main01(String[] args) {
+  public static void main(String[] args) {
     String str1 = "Hello";
     String str2 = str1.replace('l', 'x');
     String str3 = str1.replace("ell", "ohoho");
