@@ -1,5 +1,11 @@
 package exam01;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -56,11 +62,16 @@ public class Exam01 {
 		
 		 
 		      score = (Score)list.get(index);
+		      int sum = score.kor + score.eng + score.math;
+		      float average = sum / 3.0f;
 		      System.out.println("인덱스 : " +index );
 		      System.out.println("이름 : " + score.name);
 		      System.out.println("국어 : " + score.kor);
 		      System.out.println("영어 : " + score.eng);
 		      System.out.println("수학 : " + score.math);
+		      System.out.println("합계 : " + sum);
+		      System.out.println("평균 : " + average);
+		      
 		    
 	}
 	public static void delete(int index){
@@ -102,11 +113,31 @@ public class Exam01 {
 		}
 		
 	}
-	public static void exit (){
-		
+	public static void exit () throws IOException {
+		FileOutputStream out = new FileOutputStream("score1.dat");
+	   ObjectOutputStream out2 = new ObjectOutputStream(out);
+	    
+        ArrayList<Score> list2 = new  ArrayList<Score>();
+	    
+	    out2.writeObject(list);  
+	    
+	    for(int i=0;i < list2.size() ; i++){
+	    	System.out.println(list2.get(i).name + list2.get(i).kor
+	    			+ list2.get(i).eng + list2.get(i).math);
+	    }
+	    
+	    out2.close(); 
+	    out.close();
+	    System.exit(0);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		File file = new File("score1.dat");
+		if(file.exists()){
+		 FileInputStream in = new FileInputStream("score1.dat");
+		 ObjectInputStream in2 = new ObjectInputStream(in);		 
+		 list = (ArrayList<Score>) in2.readObject();
+		}
 		
 		while(true){
 			System.out.print("\n명령> ");
