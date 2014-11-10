@@ -89,7 +89,7 @@ public class Test1110 {
     
     rs = stmt.executeQuery("select Pname from PRODUCTS where pno =" +index);
     if(rs.next()){
-    System.out.println(rs.getString("pname") + "를 샂게 하시겠습니까?"
+    System.out.println(rs.getString("pname") + "를 삭제 하시겠습니까?"
         + "(y/n)");
     if(scanner.nextLine().equalsIgnoreCase("y")){
       stmt.executeUpdate("DELETE FROM PRODUCTS"
