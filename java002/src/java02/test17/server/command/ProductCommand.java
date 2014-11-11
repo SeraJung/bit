@@ -111,17 +111,24 @@ public class ProductCommand {
     
     try {
       if(!options.isEmpty()){
-      HashMap<String,String> valueMap = 
-          parseQueryString(options.get(0));
-     
-      if(valueMap.containsKey("pageNo")){
+        HashMap<String,String> valueMap = 
+            parseQueryString(options.get(0));
+      if (options.size() > 0) {
+        pageNo = Integer.parseInt(options.get(0));
+        pageSize = 3;
+      }
+      
+      if (options.size() > 1) {
+        pageSize = Integer.parseInt(options.get(1));
+      }
+      /*if(valueMap.containsKey("pageNo")){
          pageNo = Integer.parseInt(valueMap.get("pageNo"));
          pageSize = 3;
       }
       if(valueMap.containsKey("pageSize"))
         pageSize=Integer.parseInt(valueMap.get("pageSize"));
-      }
-            
+      }*/
+      }     
       for (Product product : productDao.selectList(pageNo, pageSize)) {
         out.printf("%-3d %-20s %7d %-3d\n", 
             product.getNo(), 
