@@ -1,4 +1,4 @@
-package java02.test16;
+package java02.test15;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,10 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberDao {
-  public MemberDao() {}
+public class ProductDao01 {
+  public ProductDao01() {}
 
-  public Member selectOne(String id) {
+  public Product selectOne(int no) {
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;
@@ -23,19 +23,15 @@ public class MemberDao {
           "study");
       stmt = con.createStatement();
       rs = stmt.executeQuery(
-          "SELECT UID,EMAIL,UNAME,TEL,FAX,DET_ADDR, PHOT,ANO FROM MEMBERS"
-          + " WHERE UID='" + id +"'");
+          "SELECT PNO,PNAME,QTY,MKNO FROM PRODUCTS"
+          + " WHERE PNO=" + no);
       if (rs.next()) {
-        Member member = new Member();
-        member.setId(rs.getString("UID"));
-        member.setEmail(rs.getString("EMAIL"));
-        member.setName(rs.getString("UNAME"));
-        member.setTel(rs.getString("TEL"));
-        member.setFax(rs.getString("FAX"));
-        member.setDet_addr(rs.getString("DET_ADDR"));
-        member.setPhoto(rs.getString("PHOT"));
-        member.setAddrNo(rs.getInt("ANO"));
-        return member;
+        Product product = new Product();
+        product.setNo(rs.getInt("PNO"));
+        product.setName(rs.getString("PNAME"));
+        product.setQuantity(rs.getInt("QTY"));
+        product.setMakerNo(rs.getInt("MKNO"));
+        return product;
       } else {
         return null;
       }
@@ -50,7 +46,7 @@ public class MemberDao {
     }
   }
   
-  public void update(Member member) {
+  public void update(Product product) {
     Connection con = null;
     Statement stmt = null;
     
@@ -62,16 +58,10 @@ public class MemberDao {
           "study",
           "study");
       stmt = con.createStatement();
-      stmt.executeUpdate("UPDATE MEMBERS SET"
-        + " PWD='" + member.getPassword()
-        + "', EMAIL='" + member.getEmail()
-        + "', UNAME='" + member.getEmail()
-        + "', TEL='" + member.getTel()
-        + "', FAX='" + member.getFax()
-        + "', DET_ADDR='" + member.getDet_addr()
-        + "', PHOT='" + member.getPhoto()
-        + "' , ANO= " + member.getAddrNo()
-        + " WHERE UID='" + member.getId() + "'");
+      stmt.executeUpdate("UPDATE PRODUCTS SET"
+        + " PNAME='" + product.getName()
+        + "', QTY=" + product.getQuantity()
+        + " WHERE PNO=" + product.getNo());
       
     } catch (Exception ex) {
       throw new RuntimeException(ex);
@@ -82,7 +72,7 @@ public class MemberDao {
     }
   }
   
-  public void delete(String id) {
+  public void delete(int no) {
     Connection con = null;
     Statement stmt = null;
     
@@ -94,8 +84,8 @@ public class MemberDao {
           "study",
           "study");
       stmt = con.createStatement();
-      stmt.executeUpdate("DELETE FROM MEMBERS"
-          + " WHERE UID='" + id +"'");
+      stmt.executeUpdate("DELETE FROM PRODUCTS"
+          + " WHERE PNO=" + no);
       
     } catch (Exception ex) {
       throw new RuntimeException(ex);
@@ -106,7 +96,7 @@ public class MemberDao {
     }
   }
   
-  public List<Member> selectList() {
+  public List<Product> selectList() {
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;
@@ -119,18 +109,18 @@ public class MemberDao {
           "study");
       stmt = con.createStatement();
       rs = stmt.executeQuery(
-          "SELECT UID,EMAIL,UNAME,TEL FROM MEMBERS");
+          "SELECT PNO,PNAME,QTY,MKNO FROM PRODUCTS");
       
-      ArrayList<Member> list = new ArrayList<Member>();
-      Member member = null;
+      ArrayList<Product> list = new ArrayList<Product>();
+      Product product = null;
       
       while (rs.next()) {
-        member = new Member();
-        member.setId(rs.getString("UID"));
-        member.setEmail(rs.getString("EMAIL"));
-        member.setName(rs.getString("UNAME"));
-        member.setTel(rs.getString("TEL"));
-        list.add(member);
+        product = new Product();
+        product.setNo(rs.getInt("PNO"));
+        product.setName(rs.getString("PNAME"));
+        product.setQuantity(rs.getInt("QTY"));
+        product.setMakerNo(rs.getInt("MKNO"));
+        list.add(product);
       }
       
       return list;
@@ -145,7 +135,7 @@ public class MemberDao {
     }
   }
   
-  public void insert(Member member) {
+  public void insert(Product product) {
     Connection con = null;
     Statement stmt = null;
     
@@ -157,15 +147,10 @@ public class MemberDao {
           "study",
           "study");
       stmt = con.createStatement();
-      stmt.executeUpdate("INSERT INTO MEMBERS(UID,PWD,EMAIL,UNAME,TEL,FAX,DET_ADDR, PHOT,ANO)" +
-        " VALUES('" + member.getId() + "','" 
-         + member.getPassword()+ "','"
-        + member.getEmail() + "','" 
-         + member.getName()+ "','"
-         + member.getTel() + "','"
-         + member.getFax()+ "','"
-         + member.getDet_addr() + "',"
-         + member.getAddrNo() + ")");
+      stmt.executeUpdate("INSERT INTO PRODUCTS(PNAME,QTY,MKNO)" +
+        " VALUES('" + product.getName()
+        + "'," + product.getQuantity()
+        + "," + product.getMakerNo() + ")");
     } catch (Exception ex) {
       throw new RuntimeException(ex);
       
@@ -174,7 +159,6 @@ public class MemberDao {
       try {con.close();} catch (Exception ex) {}
     }
   }
-  
 }
 
 
