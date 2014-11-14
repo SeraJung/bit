@@ -14,15 +14,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import java02.test19.server.util.DBConnectionPool;
 
 public class ProductDao {
   SqlSessionFactory sqlSessionFactory;
-  DBConnectionPool dbConnectionPool;
-  
-  public void setDbConnectionPool(DBConnectionPool dbConnectionPool) {
-    this.dbConnectionPool = dbConnectionPool;
-  }
+ 
+ 
   
   public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
     this.sqlSessionFactory = sqlSessionFactory;
@@ -36,7 +32,7 @@ public class ProductDao {
 
     try {
       return sqlSession.selectOne(
-              "java02.test19.server.ProductDao.selectList",no);
+              "java02.test19.server.ProductDao.selectOne",no);
 
     } finally {
       sqlSession.close();
@@ -46,45 +42,28 @@ public class ProductDao {
   }
   
   public void update(Product product) {
-    Connection con = null;
-    PreparedStatement stmt = null;
-    
-    try {
-      con = dbConnectionPool.getConnection();
-      stmt = con.prepareStatement(
-          "UPDATE PRODUCTS SET PNAME=?,QTY=?,MKNO=? WHERE PNO=?");
-      stmt.setString(1, product.getName());
-      stmt.setInt(2, product.getQuantity());
-      stmt.setInt(3, product.getMakerNo());
-      stmt.setInt(4, product.getNo());
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+  
+  try {
+   sqlSession.update(
+        "java02.test19.server.ProductDao.update", product);
+   sqlSession.commit();
 
-      stmt.executeUpdate();
-      
-    } catch (Exception ex) {
-      throw new RuntimeException(ex);
-      
-    } finally {
-      try {stmt.close();} catch (Exception ex) {}
-      dbConnectionPool.returnConnection(con);
-    }
+  } finally {
+    sqlSession.close();
+  }
   }
   
   public void delete(int no) {
-    Connection con = null;
-    Statement stmt = null;
+    SqlSession sqlSession = sqlSessionFactory.openSession();
     
     try {
-      con = dbConnectionPool.getConnection();
-      stmt = con.createStatement();
-      stmt.executeUpdate("DELETE FROM PRODUCTS"
-          + " WHERE PNO=" + no);
-      
-    } catch (Exception ex) {
-      throw new RuntimeException(ex);
-      
+     sqlSession.delete(
+          "java02.test19.server.ProductDao.delete", no );
+     sqlSession.commit();
+
     } finally {
-      try {stmt.close();} catch (Exception ex) {}
-      dbConnectionPool.returnConnection(con);
+      sqlSession.close();
     }
   }
   
@@ -107,21 +86,16 @@ public class ProductDao {
   }
 
   public void insert(Product product) {
-    Connection con = null;
-    PreparedStatement stmt = null;
+
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+ 
     try {
-      con = dbConnectionPool.getConnection();
-      stmt = con.prepareStatement(
-          "INSERT INTO PRODUCTS(PNAME,QTY,MKNO) VALUES(?,?,?)");
-      stmt.setString(1, product.getName());
-      stmt.setInt(2, product.getQuantity());
-      stmt.setInt(3, product.getMakerNo());
-      stmt.executeUpdate();
-    } catch (Exception ex) {
-      throw new RuntimeException(ex);
+     sqlSession.insert(
+          "java02.test19.server.ProductDao.insert", product);
+     sqlSession.commit();
+
     } finally {
-      try {stmt.close();} catch (Exception ex) {}
-      dbConnectionPool.returnConnection(con);
+      sqlSession.close();
     }
   }
 }

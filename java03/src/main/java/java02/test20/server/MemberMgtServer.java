@@ -1,18 +1,15 @@
-package java02.test19.server;
+package java02.test20.server;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
-
-import java02.test19.server.annotation.Command;
-import java02.test19.server.annotation.Component;
+import java02.test20.server.annotation.Command;
+import java02.test20.server.annotation.Component;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -21,44 +18,39 @@ import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
-public class ProductMgtServer {
+public class MemberMgtServer {
   static class CommandInfo {
     public Object instance;
     public Method method;
   }
   
   Scanner scanner; 
-  ProductDao productDao;
+  MemberDao memberDao;
   HashMap<String,CommandInfo> commandMap;
   
   public void init() throws Exception {
-    // MyBatis 설정 파일 경로
-    String resource = "java02/test19/server/mybatis-config.xml";
+    //MyBatis 설정 파일 경로
+    String resource = "java02/test20/server/mybatis-config.xml";
     
-    // 설정 파일을 읽어 들일 입력 스트림 객체를 준비한다.
-    // Resources의 GetResourceAsStream()을 사용하면,
-    // mybatis 설정 파일을 클래스 경로에서 찾는 스트림 객체를 리턴한다.
+    //설정 파일을 읽어들일 입력스트림객체를 준비
+    // Resources의 getResourcesAsStream() 을 사용하면
+    // mybatis 설정 파일을 클래스 경로에서 찾는 스틤 객체를 리턴
     
     InputStream inputStream = Resources.getResourceAsStream(resource);
-    /*
-    FileInputStream inputStream =
-        new FileInputStream(
-            "/home/bit/javaide/workspace/java03s/bin/"+ resource);
-    */
-    
-    // mybatis 설정 파일대로 동작할 SqlSessionFactory를 얻는다.
-    // 빌더 역할을 수행하는 객체를 통해서 얻는다.
+    //= FileInputStream inputStream = new FileInputStream("/home/bit/git/java63/java03/bin" + resource);
+    //mybatis 설정파일대로 동작할 SqlSessionFactory를 얻는다 
+    //빌더 역할을 수행하는 객체를 통해서 얻는다.
     SqlSessionFactory sqlSessionFactory = 
         new SqlSessionFactoryBuilder().build(inputStream);
     
-    productDao = new ProductDao();
+    memberDao = new MemberDao();
     scanner = new Scanner(System.in);
     commandMap = new HashMap<>();
-    
-    productDao.setSqlSessionFactory(sqlSessionFactory);
+
+    memberDao.setSqlSessionFactory(sqlSessionFactory);
     
     Reflections reflections = 
-        new Reflections("java02.test19.server.command");
+        new Reflections("java02.test20.server.command");
     Set<Class<?>> clazzList = 
         reflections.getTypesAnnotatedWith(Component.class);
     
@@ -85,8 +77,8 @@ public class ProductMgtServer {
       }
       
       try { 
-        method = clazz.getMethod("setProductDao", ProductDao.class);
-        method.invoke(command, productDao);
+        method = clazz.getMethod("setMemberDao", MemberDao.class);
+        method.invoke(command, memberDao);
       } catch (Exception e) {}
       
       try { 
@@ -178,11 +170,17 @@ public class ProductMgtServer {
   }
 
   public static void main(String[] args) throws Exception {
-    ProductMgtServer app = new ProductMgtServer();
+    MemberMgtServer app = new MemberMgtServer();
     app.init();
     app.service();
     app.destroy();
   }
 
 }
+
+
+
+
+
+
 

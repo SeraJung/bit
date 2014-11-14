@@ -3,9 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <!-- DBMS 연결 정보 설정 
-  default => 여러 개 연결 정보 중에서 어떤 것을 사용할지 결정!
-  -->
+  <!-- SQL 맴퍼 파일에서 사용하기 편하게 클래스 이름에 대해 별명울 붙인다. -->
+  <typeAliases>
+  <typeAlias type="java02.test19.server.Product" alias ="Product"></typeAlias>
+  </typeAliases>
   <environments default="development">
   
   <!-- DBMS연결 정보는 여러 개 선언 할 수 있다. -->
