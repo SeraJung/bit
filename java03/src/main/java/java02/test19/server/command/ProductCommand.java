@@ -2,7 +2,6 @@ package java02.test19.server.command;
 
 import java.io.PrintStream;
 import java.util.Map;
-import java.util.Scanner;
 import java02.test19.server.Product;
 import java02.test19.server.ProductDao;
 import java02.test19.server.annotation.Command;
@@ -15,7 +14,6 @@ public class ProductCommand {
   public void setProductDao(ProductDao productDao) {
     this.productDao = productDao;
   }
-  
   
   @Command("product/add")
   public void add(Map<String, Object> params) {
