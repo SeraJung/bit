@@ -1,4 +1,4 @@
-package java02.test21.spring.exam08;
+package java02.test21.spring.exam12;
 
 /* 스프링 설정
  * => 호출할 생성자 지정하기
@@ -15,14 +15,19 @@ public class Test01 {
     //Car c = new Car();
     ApplicationContext ctx =
         new ClassPathXmlApplicationContext(
-            new String[]{"java02/test21/spring/exam08/application-context.xml"});
+            new String[]{"java02/test21/spring/exam12/application-context.xml"});
     
-    Car c1 = (Car)ctx.getBean("b01");
-    System.out.println(c1);
+    Tire t01 = (Tire)ctx.getBean("t01");
+    System.out.println(t01);
     
-    Car c2 = (Car)ctx.getBean("b02");
-    System.out.println(c2);
+    Tire t02= (Tire)ctx.getBean("t02");
+    System.out.println(t02);
     
+    Car c01= (Car)ctx.getBean("c01");
+    System.out.println(c01);
+    
+    Car c02= (Car)ctx.getBean("c02");
+    System.out.println(c02);
     
   }
 
