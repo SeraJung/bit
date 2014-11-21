@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebServlet;
 
 
 @WebServlet("/product/delete")
-public class ProductdeleteServlet extends GenericServlet { 
+public class ProductDeleteServlet extends GenericServlet { 
   ProductDao productDao;
   private static final long serialVersionUID = 1L;
   
