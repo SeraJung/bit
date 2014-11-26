@@ -46,8 +46,9 @@ public class ProductListServlet extends HttpServlet {
               this.getServletContext());
       
       ProductDao productDao = (ProductDao)appCtx.getBean("productDao");
-      List<Product> products = productDao.selectList(pageNo, pageSize);
-      request.setAttribute("products", products);
+     
+      request.setAttribute("products", 
+          productDao.selectList(pageNo, pageSize));
       
       // include를 수행할 때는 여기에서 콘텐츠 타입을 설정해야 한다.
       response.setContentType("text/html;charset=UTF-8");

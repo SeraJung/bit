@@ -15,8 +15,16 @@
     <id column="PNO" property="no"/>
     <result column="PNAME" property="name"/>
     <result column="QTY" property="quantity"/>
+    <result column="MKNO" property="makerNo"/>    
+  </resultMap>
+  
+  <resultMap type="ProductListItem" id="productListItemMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="PNO" property="no"/>
+    <result column="PNAME" property="name"/>
+    <result column="QTY" property="quantity"/>
     <result column="MKNO" property="makerNo"/>
-    
+    <result column="MKNAME" property="maker"/>
   </resultMap>
   
   <sql id="productSelect">
@@ -24,7 +32,8 @@
     FROM PRODUCTS
   </sql>
   
-  <select id="selectList" parameterType="map" resultMap="productMap">
+  <select id="selectList" parameterType="map" 
+          resultMap="productListItemMap">
   SELECT 
     T1.PNO, 
     T1.PNAME, 
@@ -32,7 +41,8 @@
     T2.MKNO, 
     T2.MKNAME
   FROM PRODUCTS T1 LEFT OUTER JOIN MAKERS T2
-  USING(MKNO);
+  USING(MKNO)
+  ORDER BY T1.PNO
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>

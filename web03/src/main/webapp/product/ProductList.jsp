@@ -19,7 +19,7 @@
   <td>${product.no}</td>
   <td><a href='view.do?no=${product.no}'>${product.name}</a></td>
   <td>${product.quantity}</td>
-  <td>${product.makerNo}</td>
+  <td>${product.maker}</td>
 </tr>
 </c:forEach>
 

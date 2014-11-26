@@ -3,6 +3,7 @@ package java63.web03.dao;
 import java.util.HashMap;
 import java.util.List;
 import java63.web03.domain.Product;
+import java63.web03.domain.ProductListItem;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -54,7 +55,7 @@ public class ProductDao {
     }
   }
   
-  public List<Product> selectList(int pageNo, int pageSize) {
+  public List<ProductListItem> selectList(int pageNo, int pageSize) {
     SqlSession sqlSession = sqlSessionFactory.openSession();
     
     HashMap<String,Object> paramMap = new HashMap<>();
