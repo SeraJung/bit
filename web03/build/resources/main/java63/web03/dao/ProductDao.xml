@@ -18,13 +18,45 @@
     <result column="MKNO" property="makerNo"/>
   </resultMap>
   
+  <resultMap type="ProductListItem" id="productListItemMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="PNO" property="no"/>
+    <result column="PNAME" property="name"/>
+    <result column="QTY" property="quantity"/>
+    <result column="MKNO" property="makerNo"/>
+    <result column="MKNAME" property="maker"/>
+  </resultMap>
+  
+  <resultMap type="map" id="productListItem2Map">
+    <id column="PNO" property="no"/>
+    <result column="PNAME" property="name"/>
+    <result column="QTY" property="quantity"/>
+    <result column="MKNO" property="makerNo"/>
+    <result column="MKNAME" property="maker"/>
+  </resultMap>
+  
+  <resultMap type="ProductPhoto" id="productPhotoMap">
+    <id column="PPNO" property="no"/>
+    <result column="PNO" property="productNo"/>
+    <result column="URL" property="url"/>
+  </resultMap>
+  
   <sql id="productSelect">
     SELECT PNO, PNAME, QTY, MKNO 
     FROM PRODUCTS
   </sql>
   
-  <select id="selectList" parameterType="map" resultMap="productMap">
-    <include refid="productSelect"/>
+  <select id="selectList" parameterType="map" 
+        resultMap="productListItem2Map">
+    SELECT 
+		  T1.PNO, 
+		  T1.PNAME, 
+		  T1.QTY, 
+		  T2.MKNO,
+		  T2.MKNAME
+		FROM PRODUCTS T1 LEFT OUTER JOIN MAKERS T2 
+		USING(MKNO)
+		ORDER BY T1.PNO
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
@@ -35,7 +67,8 @@
     WHERE PNO=#{value}
   </select>
   
-  <insert id="insert" parameterType="Product">
+  <insert id="insert" parameterType="Product"
+    useGeneratedKeys="true" keyColumn="PNO" keyProperty="no">
     INSERT INTO PRODUCTS(PNAME,QTY,MKNO) 
     VALUES (#{name}, #{quantity}, #{makerNo})
   </insert>
@@ -50,6 +83,24 @@
   
   <delete id="delete" parameterType="int">
     DELETE FROM PRODUCTS WHERE PNO=#{value}
+  </delete>
+  
+  <insert id="insertPhoto" parameterType="Product">
+    INSERT INTO PROD_PHOTS(PNO,URL) 
+    VALUES (#{no}, #{photo})
+  </insert>
+  
+  <select id="selectPhoto" parameterType="int" 
+      resultMap="productPhotoMap">
+    SELECT PPNO, PNO, URL
+    FROM PROD_PHOTS
+    <if test="value > 0">
+    WHERE PNO = #{value}
+    </if>
+  </select>
+  <delete id="deletePhoto" parameterType="int">
+    DELETE FROM PROD_PHOTS
+    WHERE PNO=#{value}
   </delete>
 </mapper>
 

@@ -17,67 +17,45 @@
 package java63.web03.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class Product implements Serializable, Cloneable {
+import org.springframework.web.multipart.MultipartFile;
+
+public class Product implements Serializable {
   private static final long serialVersionUID = 1L;
   
-  protected int       no;
-  protected String    name;
-  protected int       quantity;
-  protected int       makerNo;
+  protected int             no;
+  protected String          name;
+  protected int             quantity;
+  protected int             makerNo;
+  protected String          photo;
+  protected MultipartFile   photofile;
+  protected Date            madeDate;
   
-  public Product() {}
   
-  public Product(int no, String name, int quantity, int makerNo) {
-    this.no = no;
-    this.name = name;
-    this.quantity = quantity;
-    this.makerNo = makerNo;
-  }
+ 
 
-  @Override
-  public Product clone() throws CloneNotSupportedException {
-    return (Product) super.clone();
-  }
-  
   @Override
   public String toString() {
-    return "Product [no=" + no + ", name=" + name + ", quantity=" + quantity
-        + ", makerNo=" + makerNo + "]";
+    return "Product [no=" + no + ", name=" + name + ", quantity=" 
+        + quantity + ", makerNo=" + makerNo + ", photo=" + photo 
+        + ", madeDate=" + madeDate + "]";
   }
 
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + makerNo;
-    result = prime * result + ((name == null) ? 0 : name.hashCode());
-    result = prime * result + no;
-    result = prime * result + quantity;
-    return result;
+  public Date getMadeDate() {
+    return madeDate;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    Product other = (Product) obj;
-    if (makerNo != other.makerNo)
-      return false;
-    if (name == null) {
-      if (other.name != null)
-        return false;
-    } else if (!name.equals(other.name))
-      return false;
-    if (no != other.no)
-      return false;
-    if (quantity != other.quantity)
-      return false;
-    return true;
+  public void setMadeDate(Date madeDate) {
+    this.madeDate = madeDate;
+  }
+
+  public MultipartFile getPhotofile() {
+    return photofile;
+  }
+
+  public void setPhotofile(MultipartFile photofile) {
+    this.photofile = photofile;
   }
 
   public int getNo() {
@@ -104,7 +82,14 @@ public class Product implements Serializable, Cloneable {
   public void setMakerNo(int makerNo) {
     this.makerNo = makerNo;
   }
+  public String getPhoto() {
+    return photo;
+  }
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
   
+
   
 }
 

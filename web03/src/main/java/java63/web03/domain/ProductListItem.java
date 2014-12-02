@@ -1,17 +1,15 @@
 package java63.web03.domain;
 
 import java.io.Serializable;
-/* 조인한 결과를 저장한 밸류객체를 만든것이다.
- * 
- */
+
 public class ProductListItem implements Serializable {
   private static final long serialVersionUID = 1L;
-  
+
   protected int       no;
   protected String    name;
   protected int       quantity;
   protected int       makerNo;
-  protected String       maker;
+  protected String    maker;
   
   @Override
   public String toString() {
@@ -48,5 +46,6 @@ public class ProductListItem implements Serializable {
   public void setMaker(String maker) {
     this.maker = maker;
   }
+  
   
 }
