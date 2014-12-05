@@ -43,7 +43,7 @@
   </resultMap>
   
   <sql id="productSelect">
-    SELECT PNO, PNAME, QTY, MKNO,MADE_DATE 
+    SELECT PNO, PNAME, QTY, MKNO, MADE_DATE 
     FROM PRODUCTS
   </sql>
   
@@ -68,11 +68,14 @@
     WHERE PNO=#{value}
   </select>
   
+  <select id="totalSize" resultType="int">
+    SELECT count(PNO) FROM PRODUCTS
+  </select>
+  
   <insert id="insert" parameterType="Product"
     useGeneratedKeys="true" keyColumn="PNO" keyProperty="no">
     INSERT INTO PRODUCTS(PNAME,QTY,MKNO,MADE_DATE) 
-    VALUES (#{name}, #{quantity}, #{makerNo}, #{madeDate})
-    
+    VALUES (#{name},#{quantity},#{makerNo},#{madeDate})
   </insert>
   
   <update id="update" parameterType="Product">
@@ -80,7 +83,7 @@
       PNAME=#{name},
       QTY=#{quantity},
       MKNO=#{makerNo},
-      MADE_DATE=#{madeDate]
+      MADE_DATE=#{madeDate} 
     WHERE PNO=#{no}
   </update>
   
@@ -101,6 +104,7 @@
     WHERE PNO = #{value}
     </if>
   </select>
+  
   <delete id="deletePhoto" parameterType="int">
     DELETE FROM PROD_PHOTS
     WHERE PNO=#{value}
